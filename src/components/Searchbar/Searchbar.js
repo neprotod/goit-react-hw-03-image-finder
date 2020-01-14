@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class Searchbar extends Component {
-  propTypes = {
+  static propTypes = {
     onSubmit: PropTypes.func.isRequired,
   };
 
