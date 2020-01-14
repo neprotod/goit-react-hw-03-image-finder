@@ -80,11 +80,11 @@ export default class Pixabay {
    * Get resourse for next page
    * @return {Array} [] if not find or array images
    */
-  nextPage = async () => {
+  nextPage = async (prevResult = []) => {
     const { api, getResourse } = this;
     api.page += 1;
 
     const result = await getResourse();
-    return result;
+    return prevResult.concat(result);
   };
 }
