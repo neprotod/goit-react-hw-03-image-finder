@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import config from '../config';
 
 export default class Pixabay {
@@ -17,6 +18,21 @@ export default class Pixabay {
   };
 
   /**
+   *
+   * @param {Array} items big requst array
+   * @return {Array} pretty array to work in other components
+   */
+  _transformResourse = items => {
+    return items.reduce((prettyArray, { webformatURL, largeImageURL }) => {
+      prettyArray.push({
+        webformatURL,
+        largeImageURL,
+      });
+      return prettyArray;
+    }, []);
+  };
+
+  /**
    * Get images
    *
    * @param {string | null} q what need to find
@@ -24,7 +40,7 @@ export default class Pixabay {
    * @return {Array} [] if not find or array images
    */
   getResourse = async (q = null, page = 0) => {
-    const { api, baseUrl } = this;
+    const { api, baseUrl, _transformResourse } = this;
     if (q !== null) api.q = q;
     if (page) api.page = page;
 
@@ -46,7 +62,7 @@ export default class Pixabay {
 
     const result = await res.json();
 
-    return result.hits;
+    return _transformResourse(result.hits);
   };
 
   /**
