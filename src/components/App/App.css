@@ -207,6 +207,12 @@ img {
   background-color: #303f9f;
 }
 
+.Loader{
+  display:table;
+  margin:auto;
+  padding:20px;
+}
+
 .no-found{
   padding:30px;
   text-align: center;

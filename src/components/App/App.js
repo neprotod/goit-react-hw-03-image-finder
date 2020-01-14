@@ -17,13 +17,16 @@ export default class App extends Component {
     find: '',
     images: [],
     select: null,
+    load: false,
   };
 
   async componentDidUpdate(prevProps, prevState) {
     const { find } = this.state;
     if (prevState.find === find) return false;
 
-    const { pixabay } = this;
+    const { pixabay, loading } = this;
+
+    loading(true);
 
     window.scrollTo({
       top: 0,
@@ -38,12 +41,16 @@ export default class App extends Component {
       select: null,
     });
 
+    loading(false);
+
     return true;
   }
 
   nextPage = async () => {
     const { images: prevImages } = this.state;
-    const { pixabay } = this;
+    const { pixabay, loading } = this;
+
+    loading(true);
 
     const images = await pixabay.nextPage(prevImages);
 
@@ -51,9 +58,17 @@ export default class App extends Component {
       images,
     });
 
+    loading(false);
+
     window.scrollTo({
       top: document.documentElement.scrollHeight,
       behavior: 'smooth',
+    });
+  };
+
+  loading = load => {
+    this.setState({
+      load,
     });
   };
 
@@ -70,17 +85,18 @@ export default class App extends Component {
   };
 
   render() {
-    const { images, select } = this.state;
+    const { images, select, load } = this.state;
     const { submitSearchbar, selectImage, nextPage } = this;
 
     const imagesLength = images.length > 0;
     return (
       <>
         <Searchbar onSubmit={submitSearchbar} />
-        <ImageGallery images={images} selectImage={selectImage} />
+        <Loader load={load}>
+          <ImageGallery images={images} selectImage={selectImage} />
+        </Loader>
         {imagesLength && <Button nextPage={nextPage} />}
         {select && <Modal image={select} clearImage={selectImage} />}
-        <Loader />
       </>
     );
   }
