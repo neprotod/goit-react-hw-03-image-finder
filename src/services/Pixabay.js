@@ -2,7 +2,7 @@
 import config from '../config';
 
 export default class Pixabay {
-  baseUrl = 'https://pixabay.com/api';
+  baseUrl = 'https://pixabay.com/api/';
 
   api = {
     // What find?
