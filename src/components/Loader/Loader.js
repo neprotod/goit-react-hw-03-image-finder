@@ -2,6 +2,8 @@ import React from 'react';
 import Spiner from 'react-loader-spinner';
 import PropTypes from 'prop-types';
 
+import './Loader.css';
+
 const Loader = ({ children, load }) => {
   const loader = (
     <div className="Loader">

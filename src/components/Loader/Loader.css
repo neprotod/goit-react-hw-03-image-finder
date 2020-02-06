@@ -1,0 +1,13 @@
+
+.Loader{
+  display:table;
+  margin:auto;
+  padding:20px;
+}
+
+.no-found{
+  padding:30px;
+  text-align: center;
+  font-size: 2em;
+  color:rgb(150, 150, 150);
+}

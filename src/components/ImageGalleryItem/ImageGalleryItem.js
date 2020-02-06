@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './ImageGalleryItem.css';
+
 const ImageGalleryItem = ({ image, onClick }) => {
   return (
     <li className="ImageGalleryItem" onClick={onClick} role="presentation">

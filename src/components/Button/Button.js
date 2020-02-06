@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './Button.css';
+
 const Button = ({ nextPage }) => {
   return (
     <button className="Button" type="button" onClick={nextPage}>

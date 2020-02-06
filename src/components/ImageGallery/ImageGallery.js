@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import ImageGalleryItem from '../ImageGalleryItem';
 
+import './ImageGallery.css';
+
 const ImageGallery = ({ images, selectImage }) => {
   const imageItems = images.map(item => {
     const { webformatURL } = item;
