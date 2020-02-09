@@ -22,7 +22,10 @@ export default class Searchbar extends Component {
     e.preventDefault();
     const { input } = this.state;
     const { onSubmit } = this.props;
-
+    // Reset input
+    this.setState({
+      input: '',
+    });
     onSubmit(input);
   };
 

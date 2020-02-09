@@ -6,7 +6,7 @@ export default class Pixabay {
 
   api = {
     // What find?
-    q: 'forest',
+    q: '',
     // Page number. Default 1
     page: 1,
     // Privat key
